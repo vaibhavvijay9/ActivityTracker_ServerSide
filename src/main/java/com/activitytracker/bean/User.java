@@ -1,8 +1,9 @@
 package com.activitytracker.bean;
 
-public class Users {
+public class User {
 	private String username;
 	private String password;
+	private String name;
 	
 	public String getUsername() {
 		return username;
@@ -16,16 +17,23 @@ public class Users {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Users() {
+	public String getName() {
+		return name;
+	}
+	public void setname(String name) {
+		this.name = name;
+	}
+	public User() {
 		super();
 	}
-	public Users(String username, String password) {
+	public User(String username, String password, String name) {
 		super();
 		this.username = username;
 		this.password = password;
+		this.name = name;
 	}
 	@Override
 	public String toString() {
-		return "Users [username=" + username + ", password=" + password + "]";
+		return "User [username=" + username + ", password=" + password + ", name=" + name + "]";
 	}
 }

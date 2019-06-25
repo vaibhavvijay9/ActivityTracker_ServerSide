@@ -2,10 +2,11 @@ package com.activitytracker.bean;
 
 import java.sql.Date;
 
-public class Tasks {
+public class Task {
 	private int taskId;
 	private String taskDescription;
 	private Date taskDate;
+	private boolean isCompleted;
 	
 	public int getTaskId() {
 		return taskId;
@@ -25,17 +26,25 @@ public class Tasks {
 	public void setTaskDate(Date taskDate) {
 		this.taskDate = taskDate;
 	}
-	public Tasks() {
+	public boolean isCompleted() {
+		return isCompleted;
+	}
+	public void setCompleted(boolean isCompleted) {
+		this.isCompleted = isCompleted;
+	}
+	public Task() {
 		super();
 	}
-	public Tasks(int taskId, String taskDescription, Date taskDate) {
+	public Task(int taskId, String taskDescription, Date taskDate, boolean isCompleted) {
 		super();
 		this.taskId = taskId;
 		this.taskDescription = taskDescription;
 		this.taskDate = taskDate;
+		this.isCompleted = isCompleted;
 	}
 	@Override
 	public String toString() {
-		return "Tasks [taskId=" + taskId + ", taskDescription=" + taskDescription + ", taskDate=" + taskDate + "]";
+		return "Task [taskId=" + taskId + ", taskDescription=" + taskDescription + ", taskDate=" + taskDate
+				+ ", isCompleted=" + isCompleted + "]";
 	}
 }
