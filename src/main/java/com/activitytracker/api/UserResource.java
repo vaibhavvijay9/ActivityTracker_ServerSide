@@ -21,8 +21,8 @@ import com.activitytracker.resources.DBInfo;
 import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 
 @Path("/user")
-public class UserResource {
-	
+public class UserResource 
+{	
 	@POST
 	@Path("/signUp")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -63,8 +63,7 @@ public class UserResource {
 		
 		return Response.status(200).entity(dbResponse).build();
 	}
-	
-	/*------------*/
+		
 	@POST
 	@Path("/login")
 	@Produces(MediaType.APPLICATION_JSON)
