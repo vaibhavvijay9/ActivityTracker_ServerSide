@@ -68,7 +68,7 @@ public class UserResource
 	@Path("/login")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public ResponseBean login(User user)
+	public Response login(User user)
 	{
 		String base64EncodedPassword = null;
 		String token = "";
@@ -118,8 +118,6 @@ public class UserResource
 		{
 			e.printStackTrace();
 		}
-		return responseBean;
-		/*if ReturnType of method is Response, then below return statement works.
-		return Response.status(200).entity(responseBean).build(); */
+		return Response.status(200).entity(responseBean).build();
 	}
 }

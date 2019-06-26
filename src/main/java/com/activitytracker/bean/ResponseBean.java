@@ -1,10 +1,13 @@
 package com.activitytracker.bean;
 
+import java.util.ArrayList;
+
 public class ResponseBean 
 {
 	private String message;
 	private String token;
-	
+	private ArrayList<Task> tasks;
+	private User user;
 	public String getMessage() {
 		return message;
 	}
@@ -17,16 +20,28 @@ public class ResponseBean
 	public void setToken(String token) {
 		this.token = token;
 	}
+	public ArrayList<Task> getTasks() {
+		return tasks;
+	}
+	public void setTasks(ArrayList<Task> tasks) {
+		this.tasks = tasks;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public ResponseBean() {
 		super();
 	}
-	public ResponseBean(String message, String token) {
+	public ResponseBean(String message, String token, ArrayList<Task> tasks, User user) {
 		super();
 		this.message = message;
 		this.token = token;
+		this.tasks = tasks;
+		this.user = user;
 	}
-	@Override
-	public String toString() {
-		return "ResponseBean [message=" + message + ", token=" + token + "]";
-	}
+	
+	
 }

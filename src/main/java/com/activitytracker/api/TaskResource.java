@@ -11,6 +11,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import com.activitytracker.bean.Task;
 import com.activitytracker.bean.User;
@@ -23,7 +25,7 @@ public class TaskResource
 	@GET
 	@Path("gettask/{param}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<Task> getTasks(@HeaderParam("authToken") String authToken, @PathParam("param") String param)
+	public Response getTasks(@HeaderParam("authToken") String authToken, @PathParam("param") String param)
 	{
 		User user = ValidateUser.validateUser(authToken);
 		
@@ -31,7 +33,7 @@ public class TaskResource
 		
 		if(user.getUsername() == null)
 		{
-			return null;
+			return Response.status(Status.UNAUTHORIZED).build();
 		}
 		else
 		{
@@ -62,7 +64,7 @@ public class TaskResource
 				e.printStackTrace();	
 			}
 			
-			return tasks;
+			return Response.status(200).entity(tasks).build();
 		}
 	}
 }
