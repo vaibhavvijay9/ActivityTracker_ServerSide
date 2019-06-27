@@ -39,6 +39,8 @@ public class Utility
 	// method - get tasks
 	public static ArrayList<Task> getTasks(String username, String duration)
 	{
+		// how to handle values other than below for duration, 
+		// like in url if user explicitly writes /monthaaa
 		ArrayList<Task> tasks = new ArrayList<Task>();
 		
 		String query = "";
@@ -60,7 +62,7 @@ public class Utility
 				break;
 			case "month" :
 				query = "select * from tasks where username=? and task_date between date_format(LAST_DAY(now()) + INTERVAL 1 DAY - INTERVAL 1 MONTH,'%y-%m-%d') and date_format(LAST_DAY(now()),'%y-%m-%d')";
-				break;
+				break;	
 		}
 		try
 		{
