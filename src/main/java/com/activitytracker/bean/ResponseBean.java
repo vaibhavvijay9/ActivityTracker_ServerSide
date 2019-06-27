@@ -42,6 +42,4 @@ public class ResponseBean
 		this.tasks = tasks;
 		this.user = user;
 	}
-	
-	
 }

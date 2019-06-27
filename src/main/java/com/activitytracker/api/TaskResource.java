@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response.Status;
 import com.activitytracker.bean.Task;
 import com.activitytracker.bean.User;
 import com.activitytracker.resources.DBInfo;
-import com.activitytracker.resources.ValidateUser;
+import com.activitytracker.resources.Utility;
 
 @Path("/task")
 public class TaskResource 
@@ -27,9 +27,7 @@ public class TaskResource
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getTasks(@HeaderParam("authToken") String authToken, @PathParam("param") String param)
 	{
-		User user = ValidateUser.validateUser(authToken);
-		
-		ArrayList<Task> tasks = new ArrayList<Task>();
+		User user = Utility.validateUser(authToken);
 		
 		if(user.getUsername() == null)
 		{
@@ -37,32 +35,7 @@ public class TaskResource
 		}
 		else
 		{
-			//date or string param will be recieved from front or should be generated here?
-			String query="select * from tasks where username = ?";
-			try
-			{
-				Connection con=DBInfo.getConn();	
-				PreparedStatement ps=con.prepareStatement(query);
-				ps.setString(1, user.getUsername());
-				
-				ResultSet res = ps.executeQuery();
-				
-				while(res.next())
-				{
-					Task task = new Task();
-					task.setTaskId(res.getInt(1));
-					task.setTaskDescription(res.getString(2));
-					task.setTaskDate(res.getDate(3));
-					task.setCompleted(res.getBoolean(4));
-					
-					tasks.add(task);
-				}
-				con.close();
-			}
-			catch(Exception e)
-			{
-				e.printStackTrace();	
-			}
+			ArrayList<Task> tasks = Utility.getTasks(user.getUsername(), param);
 			
 			return Response.status(200).entity(tasks).build();
 		}
