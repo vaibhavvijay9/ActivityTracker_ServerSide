@@ -39,8 +39,6 @@ public class Utility
 	// method - get tasks
 	public static ArrayList<Task> getTasks(String username, String duration)
 	{
-		// how to handle values other than below for duration, 
-		// like in url if user explicitly writes /monthaaa
 		ArrayList<Task> tasks = new ArrayList<Task>();
 		
 		String query = "";

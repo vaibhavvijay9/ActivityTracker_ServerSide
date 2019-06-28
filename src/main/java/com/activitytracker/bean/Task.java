@@ -6,7 +6,7 @@ public class Task {
 	private int taskId;
 	private String taskDescription;
 	private Date taskDate;
-	private boolean isCompleted;
+	private boolean completed;
 	private String username;
 	
 	public int getTaskId() {
@@ -28,10 +28,10 @@ public class Task {
 		this.taskDate = taskDate;
 	}
 	public boolean isCompleted() {
-		return isCompleted;
+		return completed;
 	}
-	public void setCompleted(boolean isCompleted) {
-		this.isCompleted = isCompleted;
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
 	}
 	public String getUsername() {
 		return username;
@@ -42,17 +42,17 @@ public class Task {
 	public Task() {
 		super();
 	}
-	public Task(int taskId, String taskDescription, Date taskDate, boolean isCompleted, String username) {
+	public Task(int taskId, String taskDescription, Date taskDate, boolean completed, String username) {
 		super();
 		this.taskId = taskId;
 		this.taskDescription = taskDescription;
 		this.taskDate = taskDate;
-		this.isCompleted = isCompleted;
+		this.completed = completed;
 		this.username = username;
 	}
 	@Override
 	public String toString() {
 		return "Task [taskId=" + taskId + ", taskDescription=" + taskDescription + ", taskDate=" + taskDate
-				+ ", isCompleted=" + isCompleted + ", username=" + username + "]";
+				+ ", completed=" + completed + ", username=" + username + "]";
 	}
 }

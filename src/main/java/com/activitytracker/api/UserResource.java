@@ -9,15 +9,19 @@ import java.util.Base64;
 import java.util.Date;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import com.activitytracker.bean.ResponseBean;
 import com.activitytracker.bean.User;
 import com.activitytracker.resources.DBInfo;
+import com.activitytracker.resources.Utility;
 import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 
 @Path("/user")
@@ -119,5 +123,23 @@ public class UserResource
 			e.printStackTrace();
 		}
 		return Response.status(200).entity(responseBean).build();
+	}
+	
+	//get user
+	@GET
+	@Path("/getuser")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response updateTask(@HeaderParam("authToken") String authToken)
+	{
+		User user = Utility.validateUser(authToken);
+		
+		if(user.getUsername() == null)
+		{
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		else
+		{	
+			return Response.status(200).entity(user).build();
+		}
 	}
 }

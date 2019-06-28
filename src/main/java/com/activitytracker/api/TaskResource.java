@@ -2,7 +2,6 @@ package com.activitytracker.api;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import javax.ws.rs.Consumes;
@@ -39,8 +38,6 @@ public class TaskResource
 		}
 		else
 		{
-			// Is there another way to handle values other than our fixed values for duration like /monthaaa?
-			// like can we do it in switch (default case) of Utility.getTasks()
 			if(param.equals("today") || param.equals("day") || param.equals("yesterday") 
 				|| param.equals("tomorrow") || param.equals("week") || param.equals("month"))
 			{
@@ -160,6 +157,42 @@ public class TaskResource
 			}
 			
 			return Response.status(200).entity(isDeleted).build();
+		}
+	}
+	
+	@PUT
+	@Path("/updatetaskstatus")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response updateTaskStatus(@HeaderParam("authToken") String authToken, Task task)
+	{
+		User user = Utility.validateUser(authToken);
+		
+		if(user.getUsername() == null)
+		{
+			return Response.status(Status.UNAUTHORIZED).build();
+		}
+		else
+		{
+			String query = "update tasks set is_completed=? where task_id=?";
+			int isUpdated = 0;
+			try
+			{
+				Connection con=DBInfo.getConn();	
+				PreparedStatement ps=con.prepareStatement(query);
+				ps.setBoolean(1, task.isCompleted());
+				ps.setInt(2, task.getTaskId());
+				
+				isUpdated = ps.executeUpdate();
+				
+				con.close();
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();	
+			}
+			
+			return Response.status(200).entity(isUpdated).build();
 		}
 	}
 }
