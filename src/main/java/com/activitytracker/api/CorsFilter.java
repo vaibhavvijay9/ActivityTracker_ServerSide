@@ -17,7 +17,8 @@ public class CorsFilter implements ContainerResponseFilter
 
         headers.add("Access-Control-Allow-Origin", "*");        
         headers.add("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
-        headers.add("Access-Control-Allow-Headers", "origin, content-type, accept, authorization");
+        // value of token is set in 'authToken' variable at front-end, it can be any name.
+        headers.add("Access-Control-Allow-Headers", "origin, content-type, accept, authToken");
         headers.add("Access-Control-Allow-Credentials", "true");
     }
 }
