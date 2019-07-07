@@ -38,7 +38,7 @@ public class TaskResource
 		}
 		else
 		{
-			if(param.equals("today") || param.equals("day") || param.equals("yesterday") 
+			if(param.equals("today") || param.equals("all") || param.equals("yesterday") 
 				|| param.equals("tomorrow") || param.equals("week") || param.equals("month"))
 			{
 				ArrayList<Task> tasks = Utility.getTasks(user.getUsername(), param);
@@ -74,7 +74,7 @@ public class TaskResource
 				ps.setString(1, task.getTaskDescription());
 				ps.setDate(2, task.getTaskDate());
 				ps.setBoolean(3, false);
-				ps.setString(4, task.getUsername());
+				ps.setString(4, user.getUsername());
 				
 				isAdded = ps.executeUpdate();
 				

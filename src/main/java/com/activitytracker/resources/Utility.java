@@ -46,7 +46,6 @@ public class Utility
 		switch(duration)
 		{
 			case "today":
-			case "day" :
 				query = "select * from tasks where username=? and task_date=date_format(now(),'%y-%m-%d')";
 				break;
 			case "yesterday" :
@@ -60,7 +59,10 @@ public class Utility
 				break;
 			case "month" :
 				query = "select * from tasks where username=? and task_date between date_format(LAST_DAY(now()) + INTERVAL 1 DAY - INTERVAL 1 MONTH,'%y-%m-%d') and date_format(LAST_DAY(now()),'%y-%m-%d')";
-				break;	
+				break;
+			case "all" :
+				query = "select * from tasks where username=? ";
+				break;
 		}
 		try
 		{
