@@ -125,6 +125,32 @@ public class UserResource
 		return Response.status(200).entity(responseBean).build();
 	}
 	
+	@POST
+	@Path("/logOut")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response logOut(User user)
+	{
+		String query="delete from sessions where username = ?";
+		int dbResponse=0;
+		try
+		{
+			Connection con=DBInfo.getConn();	
+			PreparedStatement ps=con.prepareStatement(query);
+			ps.setString(1, user.getUsername());
+			
+			dbResponse=ps.executeUpdate();
+			
+			con.close();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return Response.status(200).entity(dbResponse).build();
+	}
+	
 	//get user
 	@GET
 	@Path("/getuser")
