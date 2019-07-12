@@ -1,9 +1,0 @@
-com\activitytracker\api\CorsFilter.class
-com\activitytracker\bean\ResponseBean.class
-com\activitytracker\bean\User.class
-com\activitytracker\resources\Utility.class
-com\activitytracker\api\UserResource.class
-com\activitytracker\api\TaskResource.class
-com\activitytracker\resources\DBInfo.class
-com\activitytracker\bean\Task.class
-com\activitytracker\api\DemoAPI.class
