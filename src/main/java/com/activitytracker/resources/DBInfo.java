@@ -20,7 +20,7 @@ public class DBInfo
 	{
 		try
 		{
-			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/activitytracker","root","rat");	
+			con=DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/cQZmzGh0iL","cQZmzGh0iL","6LhvEPNaJb");	
 		}
 		catch(Exception e)
 		{
