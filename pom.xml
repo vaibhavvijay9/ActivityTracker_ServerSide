@@ -68,7 +68,11 @@
                 </execution>
             </executions>
             <configuration>
-                 <jdkVersion>1.8</jdkVersion>
+            	<rules>
+                    <requireJavaVersion>
+                        <version>[1.6,1.8)</version>
+                    </requireJavaVersion>
+                </rules>
              </configuration>
         </plugin>
     </plugins>

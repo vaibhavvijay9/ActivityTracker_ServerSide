@@ -67,6 +67,13 @@
                     <goals><goal>copy-dependencies</goal></goals>
                 </execution>
             </executions>
+            <configuration>
+            	<rules>
+                    <requireJavaVersion>
+                        <version>[1.6,1.8)</version>
+                    </requireJavaVersion>
+                </rules>
+             </configuration>
         </plugin>
     </plugins>
     </build>
