@@ -27,6 +27,14 @@ import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 @Path("/user")
 public class UserResource 
 {	
+	@GET
+	public Response getMsg()
+	{
+		String message = "Hey Jersey!!";
+		
+		return Response.status(200).entity(message).build();
+	}
+	
 	@POST
 	@Path("/signUp")
 	@Produces(MediaType.APPLICATION_JSON)
