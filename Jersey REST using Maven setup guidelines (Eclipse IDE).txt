@@ -1,0 +1,18 @@
+** Jersey JAX-RS using Maven **
+
+1. download Maven
+2.1. add to path environment variable "F:\apache-maven-3.6.1\bin"
+2.2. set path for MAVEN_HOME=F:\apache-maven-3.6.1 in environment variables
+3. Create a new Maven project in Eclipse
+4. From the list select artifactId=maven-archetype-webapp
+5. create a folder named "java" inside main folder
+6. add dependencies in pom.xml
+6.a. Jersey - servlet, server, client
+6.b. Jersey mapping (object mapping i.e. if you don't want to use JsonParser or Gson jar) - jackson
+6.c. for further tasks add the suitable dependencies like log4j, jdbc, etc. 
+7. If you opt for 6.b, then in the bean/entity class you must do the following :
+a. create a default and a parameterized constructor
+b. override toString()
+8. update the web.xml file
+
+Note - Activity_Tracker_ServerSide project's pom.xml also has dependencies for Heroku deployment. 
