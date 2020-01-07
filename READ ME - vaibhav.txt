@@ -1,0 +1,11 @@
+Steps to make changes and deploy -
+
+. Make changes
+. Right Click project in Eclipse and select 'Run As' --> 'Maven Build'(2nd one)
+. In goal write - clean install
+. see console and it should display 'BUILD SUCCESS'
+. git add .
+. git commit -m "msg"
+. git push origin master
+
+==> Your updated code will be deployed on heroku.
